@@ -7,48 +7,54 @@
   <style>
     body {
       margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #0e0e0e;
       color: white;
     }
     header {
       text-align: center;
-      padding: 4rem 1rem;
-      background: linear-gradient(120deg, #4e54c8, #8f94fb);
-      color: white;
-      animation: fadeIn 2s ease-in-out;
+      padding: 2rem;
+      background: #1e1e1e;
     }
     header h1 {
-      font-size: 3rem;
       margin: 0;
+      font-size: 2.5rem;
     }
     header p {
+      margin: 0.5rem 0 0;
       font-size: 1.2rem;
-      margin-top: 0.5rem;
+      color: #ccc;
     }
-    nav {
+    .tabs {
       display: flex;
       justify-content: center;
-      gap: 1rem;
-      margin: 2rem 0;
+      background: #1e1e1e;
+      padding: 1rem 0;
     }
-    nav button {
-      padding: 0.7rem 1.5rem;
-      background: #1abc9c;
+    .tab {
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      background: #333;
       border: none;
-      border-radius: 5px;
       color: white;
       cursor: pointer;
-      font-size: 1rem;
-      transition: background 0.3s ease;
+      border-radius: 0.3rem;
+      transition: background 0.3s;
     }
-    nav button:hover {
-      background: #16a085;
+    .tab:hover, .tab.active {
+      background: #4caf50;
     }
-    .plans-container {
-      padding: 2rem;
+    .category {
       display: none;
-      animation: fadeIn 1s ease-in-out;
+      padding: 2rem;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+    .category.active {
+      display: block;
+    }
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
     }
     .plans {
       display: flex;
@@ -57,47 +63,36 @@
       justify-content: center;
     }
     .plan {
-      background: #1e1e1e;
-      border: 1px solid #444;
-      border-radius: 10px;
+      flex: 1 1 300px;
+      background: #1c1c1c;
       padding: 1rem;
-      width: 280px;
-      transition: transform 0.3s;
+      border-radius: 0.5rem;
+      border: 1px solid #444;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
     .plan:hover {
       transform: translateY(-5px);
+      box-shadow: 0 0 10px #4caf50;
     }
     .plan h3 {
-      margin-top: 0;
+      margin: 0.5rem 0;
     }
-    .price {
+    .plan p {
+      margin: 0.3rem 0;
+    }
+    .plan .price {
+      font-size: 1.2rem;
       font-weight: bold;
-      font-size: 1.1rem;
-      color: #4caf50;
+      margin-top: 0.5rem;
     }
     .buy-btn {
       display: inline-block;
       margin-top: 1rem;
       padding: 0.5rem 1rem;
-      background: #3498db;
+      background: #4caf50;
       color: white;
       text-decoration: none;
-      border-radius: 4px;
-    }
-    .about, .reviews {
-      padding: 2rem;
-      background: #111;
-      animation: fadeInUp 2s ease;
-    }
-    .about h2, .reviews h2 {
-      text-align: center;
-    }
-    .review {
-      background: #222;
-      padding: 1rem;
-      margin: 1rem auto;
-      border-radius: 8px;
-      max-width: 600px;
+      border-radius: 0.3rem;
     }
     footer {
       text-align: center;
@@ -105,88 +100,56 @@
       background: #1e1e1e;
       color: #aaa;
     }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
+    .about, .reviews {
+      padding: 2rem;
+      background: #1c1c1c;
+      margin: 2rem;
+      border-radius: 0.5rem;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+    .about h2, .reviews h2 {
+      border-bottom: 2px solid #555;
+      padding-bottom: 0.5rem;
+    }
+    .review {
+      margin-top: 1rem;
+      padding: 1rem;
+      background: #2a2a2a;
+      border-radius: 0.3rem;
     }
   </style>
 </head>
 <body>
   <header>
     <h1>Vault Hosting</h1>
-    <p>Powerful, Budget-friendly Minecraft Hosting for All Players</p>
+    <p>Affordable Minecraft Server Hosting</p>
   </header>
 
-  <nav>
-    <button onclick="showPlans('power')">Power Plans</button>
-    <button onclick="showPlans('budget')">Budget Plans</button>
-    <button onclick="showPlans('cheap')">Cheap Plans</button>
-  </nav>
+  <div class="tabs">
+    <button class="tab active" data-category="power">Power Plans</button>
+    <button class="tab" data-category="budget">Budget Plans</button>
+    <button class="tab" data-category="cheap">Cheap Plans</button>
+  </div>
 
-  <div id="power" class="plans-container">
-    <h2 style="text-align:center;">Power Plans</h2>
+  <section id="power" class="category active">
+    <h2>🔋 Power Plans</h2>
     <div class="plans">
       <div class="plan"><h3>🌿 BASIC PLAN</h3><p>6GB RAM, 50GB SSD, 200% CPU</p><p class="price">₹415/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
       <div class="plan"><h3>⚡ STORMY PLAN</h3><p>12GB RAM, 100GB SSD, 400% CPU</p><p class="price">₹759/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
-      <!-- Add more power plans here -->
+      <div class="plan"><h3>🌪 TORNADO PLAN</h3><p>16GB RAM, 150GB SSD, 600% CPU</p><p class="price">₹959/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>🌊 CYCLONE PLAN</h3><p>24GB RAM, 250GB SSD, 900% CPU</p><p class="price">₹1209/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>⚡ ENERGY PLAN</h3><p>32GB RAM, 350GB SSD, 1200% CPU</p><p class="price">₹1559/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>👑 SUPREME PLAN</h3><p>64GB RAM, 500GB SSD, 1600% CPU</p><p class="price">₹2859/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>♾ INFINITY PLAN</h3><p>Unlimited RAM, SSD, CPU</p><p class="price">₹3859/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
     </div>
-  </div>
+  </section>
 
-  <div id="budget" class="plans-container">
-    <h2 style="text-align:center;">Budget Plans</h2>
+  <section id="budget" class="category">
+    <h2>💰 Budget Plans</h2>
     <div class="plans">
       <div class="plan"><h3>🌳 SPRUCE PLAN</h3><p>4GB RAM, 15GB SSD, 150% CPU</p><p class="price">₹160/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>⛏ GRAVEL PLAN</h3><p>6GB RAM, 25GB SSD, 200% CPU</p><p class="price">₹245/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
       <div class="plan"><h3>🔥 CHARCOAL PLAN</h3><p>8GB RAM, 35GB SSD, 300% CPU</p><p class="price">₹300/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
-      <!-- Add more budget plans here -->
-    </div>
-  </div>
-
-  <div id="cheap" class="plans-container">
-    <h2 style="text-align:center;">Cheap Plans</h2>
-    <div class="plans">
-      <div class="plan"><h3>🌿 ROOT PLAN</h3><p>3GB RAM, 10GB SSD, 100% CPU</p><p class="price">₹70/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
-      <div class="plan"><h3>🧸 FROST PLAN</h3><p>5GB RAM, 20GB SSD, 150% CPU</p><p class="price">₹110/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
-      <!-- Add more cheap plans here -->
-    </div>
-  </div>
-
-  <section class="about">
-    <h2>Why Choose Vault Hosting?</h2>
-    <p style="text-align:center; max-width: 800px; margin: auto;">
-      Vault Hosting is India's #1 choice for affordable, fast, and powerful Minecraft hosting. Whether you're a casual player or a large community, we have plans that scale with you. Our focus is speed, uptime, and excellent customer support on Discord.
-    </p>
-  </section>
-
-  <section class="reviews">
-    <h2>What Our Users Say</h2>
-    <div class="review">
-      <strong>⭐️⭐️⭐️⭐️⭐️ - Rishi_Gamer</strong>
-      <p>Amazing server speed and zero lag! Support team is quick and helpful. Recommended!</p>
-    </div>
-    <div class="review">
-      <strong>⭐️⭐️⭐️⭐️⭐️ - AnkitMC</strong>
-      <p>I was shocked to get this level of performance for just ₹70/month. Truly value for money.</p>
-    </div>
-    <div class="review">
-      <strong>⭐️⭐️⭐️⭐️⭐️ - PriyaCrafts</strong>
-      <p>Easy setup, friendly support on Discord, and no downtime. Vault Hosting is 🔥🔥🔥</p>
-    </div>
-  </section>
-
-  <footer>
-    &copy; 2025 Vault Hosting. All rights reserved.
-  </footer>
-
-  <script>
-    function showPlans(category) {
-      document.querySelectorAll('.plans-container').forEach(el => el.style.display = 'none');
-      document.getElementById(category).style.display = 'block';
-    }
-  </script>
-</body>
-</html>
+      <div class="plan"><h3>🏗 STEEL PLAN</h3><p>10GB RAM, 40GB SSD, 350% CPU</p><p class="price">₹349/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>💎 CRYSTAL PLAN</h3><p>12GB RAM, 50GB SSD, 400% CPU</p><p class="price">₹439/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>🗺 ANCIENT PLAN</h3><p>16GB RAM, 60GB SSD, 500% CPU</p><p class="price">₹549/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>🚀 BEDROCK PLAN</h3><p>32GB RAM, 90GB SSD, 900% CPU</p><p class="price">₹849/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a33

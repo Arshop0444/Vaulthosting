@@ -2,152 +2,191 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Vault Hosting - Minecraft Servers</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vault Hosting | Minecraft Server Hosting</title>
   <style>
     body {
+      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      margin: 0;
-      background: #0e0e0e;
-      color: #ffffff;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
     }
-
     header {
-      background: #1f1f1f;
-      padding: 20px;
       text-align: center;
+      padding: 4rem 1rem;
+      background: linear-gradient(120deg, #4e54c8, #8f94fb);
+      color: white;
+      animation: fadeIn 2s ease-in-out;
     }
-
     header h1 {
+      font-size: 3rem;
       margin: 0;
-      color: #58a6ff;
-      font-size: 32px;
     }
-
-    .section {
-      padding: 30px 20px;
+    header p {
+      font-size: 1.2rem;
+      margin-top: 0.5rem;
     }
-
-    .section h2 {
-      text-align: center;
-      color: #58a6ff;
-      margin-bottom: 20px;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2rem 0;
     }
-
+    nav button {
+      padding: 0.7rem 1.5rem;
+      background: #1abc9c;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+    nav button:hover {
+      background: #16a085;
+    }
+    .plans-container {
+      padding: 2rem;
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+    }
     .plans {
       display: flex;
       flex-wrap: wrap;
+      gap: 1rem;
       justify-content: center;
-      gap: 20px;
     }
-
     .plan {
-      background: #1c1c1c;
-      border: 1px solid #333;
-      border-radius: 12px;
-      padding: 20px;
-      width: 300px;
-      box-shadow: 0 0 10px rgba(88, 166, 255, 0.1);
+      background: #1e1e1e;
+      border: 1px solid #444;
+      border-radius: 10px;
+      padding: 1rem;
+      width: 280px;
+      transition: transform 0.3s;
     }
-
+    .plan:hover {
+      transform: translateY(-5px);
+    }
     .plan h3 {
       margin-top: 0;
-      color: #ffffff;
     }
-
-    .plan p {
-      color: #ccc;
+    .price {
+      font-weight: bold;
+      font-size: 1.1rem;
+      color: #4caf50;
     }
-
-    .btn {
-      display: block;
-      margin-top: 15px;
-      background: #58a6ff;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
+    .buy-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.5rem 1rem;
+      background: #3498db;
+      color: white;
       text-decoration: none;
+      border-radius: 4px;
+    }
+    .about, .reviews {
+      padding: 2rem;
+      background: #111;
+      animation: fadeInUp 2s ease;
+    }
+    .about h2, .reviews h2 {
+      text-align: center;
+    }
+    .review {
+      background: #222;
+      padding: 1rem;
+      margin: 1rem auto;
       border-radius: 8px;
-      transition: background 0.3s;
+      max-width: 600px;
     }
-
-    .btn:hover {
-      background: #1f90ff;
-    }
-
     footer {
       text-align: center;
-      padding: 20px;
-      background: #1f1f1f;
+      padding: 1rem;
+      background: #1e1e1e;
       color: #aaa;
     }
 
-    @media screen and (max-width: 600px) {
-      .plans {
-        flex-direction: column;
-        align-items: center;
-      }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Vault Hosting</h1>
-    <p>Affordable, Reliable & Powerful Minecraft Hosting</p>
+    <p>Powerful, Budget-friendly Minecraft Hosting for All Players</p>
   </header>
 
-  <div class="section">
-    <h2>Power Plans ⚡</h2>
+  <nav>
+    <button onclick="showPlans('power')">Power Plans</button>
+    <button onclick="showPlans('budget')">Budget Plans</button>
+    <button onclick="showPlans('cheap')">Cheap Plans</button>
+  </nav>
+
+  <div id="power" class="plans-container">
+    <h2 style="text-align:center;">Power Plans</h2>
     <div class="plans">
-      <div class="plan">
-        <h3>Power 4GB</h3>
-        <p>4GB RAM • Unlimited Slots • SSD Storage</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
-      <div class="plan">
-        <h3>Power 8GB</h3>
-        <p>8GB RAM • Unlimited Slots • SSD Storage</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
+      <div class="plan"><h3>🌿 BASIC PLAN</h3><p>6GB RAM, 50GB SSD, 200% CPU</p><p class="price">₹415/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>⚡ STORMY PLAN</h3><p>12GB RAM, 100GB SSD, 400% CPU</p><p class="price">₹759/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <!-- Add more power plans here -->
     </div>
   </div>
 
-  <div class="section">
-    <h2>Budget Plans 💸</h2>
+  <div id="budget" class="plans-container">
+    <h2 style="text-align:center;">Budget Plans</h2>
     <div class="plans">
-      <div class="plan">
-        <h3>Budget 2GB</h3>
-        <p>2GB RAM • 30 Slots • Limited Storage</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
-      <div class="plan">
-        <h3>Budget 4GB</h3>
-        <p>4GB RAM • 50 Slots • Fast Storage</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
+      <div class="plan"><h3>🌳 SPRUCE PLAN</h3><p>4GB RAM, 15GB SSD, 150% CPU</p><p class="price">₹160/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>🔥 CHARCOAL PLAN</h3><p>8GB RAM, 35GB SSD, 300% CPU</p><p class="price">₹300/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <!-- Add more budget plans here -->
     </div>
   </div>
 
-  <div class="section">
-    <h2>Cheap Plans 🧊</h2>
+  <div id="cheap" class="plans-container">
+    <h2 style="text-align:center;">Cheap Plans</h2>
     <div class="plans">
-      <div class="plan">
-        <h3>Cheap 1GB</h3>
-        <p>1GB RAM • 10 Slots • Limited Speed</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
-      <div class="plan">
-        <h3>Cheap 2GB</h3>
-        <p>2GB RAM • 20 Slots • HDD Storage</p>
-        <a class="btn" href="https://discord.gg/vxNj9DS4">Buy Now</a>
-      </div>
+      <div class="plan"><h3>🌿 ROOT PLAN</h3><p>3GB RAM, 10GB SSD, 100% CPU</p><p class="price">₹70/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <div class="plan"><h3>🧸 FROST PLAN</h3><p>5GB RAM, 20GB SSD, 150% CPU</p><p class="price">₹110/month</p><a href="https://discord.gg/vxNj9DS4" class="buy-btn">Buy Now</a></div>
+      <!-- Add more cheap plans here -->
     </div>
   </div>
+
+  <section class="about">
+    <h2>Why Choose Vault Hosting?</h2>
+    <p style="text-align:center; max-width: 800px; margin: auto;">
+      Vault Hosting is India's #1 choice for affordable, fast, and powerful Minecraft hosting. Whether you're a casual player or a large community, we have plans that scale with you. Our focus is speed, uptime, and excellent customer support on Discord.
+    </p>
+  </section>
+
+  <section class="reviews">
+    <h2>What Our Users Say</h2>
+    <div class="review">
+      <strong>⭐️⭐️⭐️⭐️⭐️ - Rishi_Gamer</strong>
+      <p>Amazing server speed and zero lag! Support team is quick and helpful. Recommended!</p>
+    </div>
+    <div class="review">
+      <strong>⭐️⭐️⭐️⭐️⭐️ - AnkitMC</strong>
+      <p>I was shocked to get this level of performance for just ₹70/month. Truly value for money.</p>
+    </div>
+    <div class="review">
+      <strong>⭐️⭐️⭐️⭐️⭐️ - PriyaCrafts</strong>
+      <p>Easy setup, friendly support on Discord, and no downtime. Vault Hosting is 🔥🔥🔥</p>
+    </div>
+  </section>
 
   <footer>
-    &copy; 2025 Vault Hosting • Built with ❤️ for Minecraft lovers
+    &copy; 2025 Vault Hosting. All rights reserved.
   </footer>
 
+  <script>
+    function showPlans(category) {
+      document.querySelectorAll('.plans-container').forEach(el => el.style.display = 'none');
+      document.getElementById(category).style.display = 'block';
+    }
+  </script>
 </body>
 </html>

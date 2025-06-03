@@ -1,133 +1,536 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Easy Hosting - Vault Hosting</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vault Hosting - Minecraft Server Hosting</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
 
-    body {
-      background: linear-gradient(to right, #0f0c29, #302b63, #24243e);
-      color: white;
-      padding: 30px 15px;
-    }
+        body {
+            background: linear-gradient(135deg, #0A0F24 0%, #1A1F3A 100%);
+            color: #D0E6FF;
+            line-height: 1.6;
+        }
 
-    header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+        header {
+            padding: 20px;
+            text-align: center;
+        }
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 600;
-    }
+        .logo {
+            color: #00FF99;
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
 
-    header p {
-      font-size: 1.2rem;
-      color: #ccc;
-    }
+        .hero {
+            text-align: center;
+            padding: 80px 20px;
+        }
 
-    .plans {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 25px;
-    }
+        .hero h1 {
+            font-size: 3rem;
+            color: #E6F0FA;
+            margin-bottom: 15px;
+        }
 
-    .plan {
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 20px;
-      border-radius: 15px;
-      width: 280px;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      transition: 0.3s;
-    }
+        .hero p {
+            color: #A0A0A0;
+            margin-bottom: 30px;
+            font-size: 1.2rem;
+        }
 
-    .plan:hover {
-      transform: scale(1.03);
-      border-color: #00ffcc;
-    }
+        .btn {
+            background: linear-gradient(90deg, #00A3FF, #00D4FF);
+            color: #E6F0FA;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.3s ease;
+        }
 
-    .plan h2 {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-    }
+        .btn:hover {
+            transform: scale(1.1);
+        }
 
-    .plan p {
-      font-size: 0.95rem;
-      color: #aaa;
-      margin-bottom: 15px;
-    }
+        .btn.secondary {
+            background: transparent;
+            border: 2px solid #00A3FF;
+        }
 
-    .plan .price {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
+        .btn.secondary:hover {
+            background: #00A3FF;
+        }
 
-    .plan button {
-      background-color: #00ffcc;
-      color: #000;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: 0.2s;
-    }
+        .plans-section {
+            padding: 80px 20px;
+            text-align: center;
+            display: none;
+        }
 
-    .plan button:hover {
-      background-color: #00e6b8;
-    }
+        .plans-section.active {
+            display: block;
+        }
 
-    @media (max-width: 600px) {
-      .plan {
-        width: 90%;
-      }
+        .plans-section h2 {
+            font-size: 2.5rem;
+            color: #E6F0FA;
+            margin-bottom: 20px;
+        }
 
-      header h1 {
-        font-size: 2.2rem;
-      }
-    }
-  </style>
-</head>
-<body>
+        .category-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
 
-  <header>
-    <h1>Easy Minecraft Hosting</h1>
-    <p>Affordable & Powerful Plans for Everyone</p>
-  </header>
+        .category-tab {
+            background: #1A1F3A;
+            padding: 15px 30px;
+            border-radius: 8px;
+            color: #E6F0FA;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
 
-  <div class="plans">
-    <div class="plan">
-      <h2>Easy Plan 1</h2>
-      <p>1GB RAM • SSD • DDoS Protection</p>
-      <div class="price">₹49/mo</div>
-      <button onclick="location.href='https://discord.gg/vxNj9DS4'">Buy Now</button>
-    </div>
+        .category-tab:hover {
+            background: #2A2F4A;
+        }
 
-    <div class="plan">
-      <h2>Easy Plan 2</h2>
-      <p>2GB RAM • SSD • 24/7 Uptime</p>
-      <div class="price">₹79/mo</div>
-      <button onclick="location.href='https://discord.gg/vxNj9DS4'">Buy Now</button>
-    </div>
+        .category-tab.active {
+            background: linear-gradient(90deg, #00A3FF, #00D4FF);
+        }
 
-    <div class="plan">
-      <h2>Easy Plan 3</h2>
-      <p>4GB RAM • SSD • Free Support</p>
-      <div class="price">₹129/mo</div>
-      <button onclick="location.href='https://discord.gg/vxNj9DS4'">Buy Now</button>
-    </div>
-  </div>
+        .plan-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
 
-</body>
-</html>
+        .plan {
+            background: #1A1F3A;
+            padding: 20px;
+            border-radius: 10px;
+            color: #A0A0A0;
+            transition: transform 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h3 {
+            color: #E6F0FA;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .plan p {
+            margin-bottom: 10px;
+        }
+
+        .plan-content {
+            display: none;
+        }
+
+        .plan-content.active {
+            display: block;
+        }
+
+        .back-btn {
+            margin: 20px auto;
+            display: inline-block;
+        }
+
+        .features-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .features-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #E6F0FA;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .feature {
+            background: #1A1F3A;
+            padding: 20px;
+            border-radius: 10px;
+            color: #A0A0A0;
+        }
+
+        .testimonials-section {
+            padding: 80px 20px;
+            text-align: center;
+            background: linear-gradient(135deg, #1A1F3A, #0A0F24);
+        }
+
+        .testimonials-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #E6F0FA;
+        }
+
+        .testimonial {
+            background: #1A1F3A;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 20px auto;
+        }
+
+        .stars {
+            color: #00FF99;
+            margin-bottom: 10px;
+        }
+
+        .testimonial p {
+            color: #A0A0A0;
+        }
+
+        .faq-section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .faq-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: #E6F0FA;
+        }
+
+        .faq {
+            background: #1A1F3A;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 500px;
+            margin: 10px auto;
+            text-align: left;
+        }
+
+        .faq h4 {
+            color: #A0A0A0;
+            margin-bottom: 10px;
+        }
+
+        .footer p {
+            padding: 20px;
+            text-align: center;
+            color: #A0A0A0;
+            background: #0A0F24;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+    </head>
+    <body>
+        <header>
+            <div class="logo">Vault Hosting</div>
+        </header>
+
+        <section class="hero">
+            <h1>Minecraft Server Hosting Made Simple!</h1>
+            <p>Launch your Minecraft adventure with powerful hosting.</p>
+            <a href="#" class="btn">Buy Now</a>
+            <a href="#" class="btn secondary" onclick="togglePlans()">View Plans</a>
+        </section>
+
+        <section class="plans-section" id="plans">
+            <h2>Our Plans</h2>
+            <a href="#" class="btn back-btn" onclick="togglePlans()">Back to Home</a>
+            <div class="category-tabs">
+                <div class="category-tab active" onclick="showCategory('power')">Power Plan</div>
+                <div class="category-tab" onclick="showCategory('budget')">Budget Plan</div>
+                <div class="category-tab" onclick="showCategory('cheap')">Cheap Plan</div>
+            </div>
+            <div id="power" class="plan-content active">
+                <div class="plan-grid">
+                    <div class="plan">
+                        <h3>🌿 Basic Plan</h3>
+                        <p>🔹 6GB RAM 🛠️</p>
+                        <p>🔹 50GB SSD 💾</p>
+                        <p>🔹 200% CPU ⚡</p>
+                        <p><strong>💸 ₹415/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🌩️ Stormy Plan</h3>
+                        <p>🔹 12GB RAM 🛠️</p>
+                        <p>🔹 100GB SSD 💾</p>
+                        <p>🔹 400% CPU ⚡</p>
+                        <p><strong>💸 ₹759/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🌪️ Tornado Plan</h3>
+                        <p>🔹 16GB RAM 🛠️</p>
+                        <p>🔹 150GB SSD 💾</p>
+                        <p>🔹 600% CPU ⚡</p>
+                        <p><strong>💸 ₹959/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🌊 Cyclone Plan</h3>
+                        <p>🔹 24GB RAM 🛠️</p>
+                        <p>🔹 250GB SSD 💾</p>
+                        <p>🔹 900% CPU ⚡</p>
+                        <p><strong>💸 ₹1,209/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>⚡ Energy Plan</h3>
+                        <p>🔹 32GB RAM 🛠️</p>
+                        <p>🔹 350GB SSD 💾</p>
+                        <p>🔹 1200% CPU ⚡</p>
+                        <p><strong>💸 ₹1,559/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>👑 Supreme Plan</h3>
+                        <p>🔹 64GB RAM 🛠️</p>
+                        <p>🔹 500GB SSD 💾</p>
+                        <p>🔹 1600% CPU ⚡</p>
+                        <p><strong>💸 ₹2,859/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>♾️ Infinity Plan</h3>
+                        <p>🔹 Unlimited RAM 🛠️</p>
+                        <p>🔹 Unlimited SSD 💾</p>
+                        <p>🔹 Unlimited CPU ⚡</p>
+                        <p><strong>💸 ₹3,859/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+            <div id="budget" class="plan-content">
+                <div class="plan-grid">
+                    <div class="plan">
+                        <h3>🌲 Spruce Plan</h3>
+                        <p>🔹 CPU - 150% 💻</p>
+                        <p>🔹 RAM - 4GB 🛠️</p>
+                        <p>🔹 SSD - 15GB 💾</p>
+                        <p><strong>💸 ₹160/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>⛏️ Gravel Plan</h3>
+                        <p>🔹 CPU - 200% 💻</p>
+                        <p>🔹 RAM - 6GB 🛠️</p>
+                        <p>🔹 SSD - 25GB 💾</p>
+                        <p><strong>💸 ₹245/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🔥 Charcoal Plan</h3>
+                        <p>🔹 CPU - 300% 💻</p>
+                        <p>🔹 RAM - 8GB 🛠️</p>
+                        <p>🔹 SSD - 35GB 💾</p>
+                        <p><strong>💸 ₹300/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🏗️ Steel Plan</h3>
+                        <p>🔹 CPU - 350% 💻</p>
+                        <p>🔹 RAM - 10GB 🛠️</p>
+                        <p>🔹 SSD - 40GB 💾</p>
+                        <p><strong>💸 ₹349/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>💎 Crystal Plan</h3>
+                        <p>🔹 CPU - 400% 💻</p>
+                        <p>🔹 RAM - 12GB 🛠️</p>
+                        <p>🔹 SSD - 50GB 💾</p>
+                        <p><strong>💸 ₹439/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🏺 Ancient Plan</h3>
+                        <p>🔹 CPU - 500% 💻</p>
+                        <p>🔹 RAM - 16GB 🛠️</p>
+                        <p>🔹 SSD - 60GB 💾</p>
+                        <p><strong>💸 ₹549/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🚀 Bedrock Plan</h3>
+                        <p>🔹 CPU - 900% 💻</p>
+                        <p>🔹 RAM - 32GB 🛠️</p>
+                        <p>🔹 SSD - 90GB 💾</p>
+                        <p><strong>💸 ₹849/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+            <div id="cheap" class="plan-content">
+                <div class="plan-grid">
+                    <div class="plan">
+                        <h3>🌿 Root Plan</h3>
+                        <p>🔹 CPU - 100% 💻</p>
+                        <p>🔹 RAM - 3GB 🛠</p>
+                        <p>🔹 SSD - 10GB 💾</p>
+                        <p><strong>💸 ₹70/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🪵 Bark Plan</h3>
+                        <p>🔹 CPU - 125% 💻</p>
+                        <p>🔹 RAM - 4GB 🛠</p>
+                        <p>🔹 SSD - 15GB 💾</p>
+                        <p><strong>💸 ₹90/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🧊 Frost Plan</h3>
+                        <p>🔹 CPU - 150% 💻</p>
+                        <p>🔹 RAM - 5GB 🛠</p>
+                        <p>🔹 SSD - 20GB 💾</p>
+                        <p><strong>💸 ₹110/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🔥 Spark Plan</h3>
+                        <p>🔹 CPU - 175% 💻</p>
+                        <p>🔹 RAM - 6GB 🛠</p>
+                        <p>🔹 SSD - 25GB 💾</p>
+                        <p><strong>💸 ₹130/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🌊 Tide Plan</h3>
+                        <p>🔹 CPU - 200% 💻</p>
+                        <p>🔹 RAM - 8GB 🛠</p>
+                        <p>🔹 SSD - 30GB 💾</p>
+                        <p><strong>💸 ₹160/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🌩️ Storm Plan</h3>
+                        <p>🔹 CPU - 225% 💻</p>
+                        <p>🔹 RAM - 10GB 🛠</p>
+                        <p>🔹 SSD - 35GB 💾</p>
+                        <p><strong>💸 ₹190/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>💎 Quartz Plan</h3>
+                        <p>🔹 CPU - 250% 💻</p>
+                        <p>🔹 RAM - 12GB 🛠</p>
+                        <p>🔹 SSD - 40GB 💾</p>
+                        <p><strong>💸 ₹220/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>🪨 Obsidian Plan</h3>
+                        <p>🔹 CPU - 300% 💻</p>
+                        <p>🔹 RAM - 16GB 🛠</p>
+                        <p>🔹 SSD - 50GB 💾</p>
+                        <p><strong>💸 ₹280/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                    <div class="plan">
+                        <h3>♾️ Infinity Plan</h3>
+                        <p>🔹 CPU - Unlimited 💻</p>
+                        <p>🔹 RAM - Unlimited 🛠</p>
+                        <p>🔹 SSD - Unlimited 💾</p>
+                        <p><strong>💸 ₹530/month</strong></p>
+                        <a href="https://discord.gg/vxNj9DS4" class="btn" target="_blank">Choose Plan</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features-section">
+            <h2>Meet the Vault Hosting Game Panel</h2>
+            <p>Manage your server with our easy-to-use control panel</p>
+            <div class="feature-grid">
+                <div class="feature">Console</div>
+                <div class="feature">Files</div>
+                <div class="feature">Databases</div>
+                <div class="feature">Scheduling</div>
+                <div class="feature">Backups</div>
+                <div class="feature">Network</div>
+            </div>
+        </section>
+
+        <section class="testimonials-section">
+            <h2>Trusted by Gamers</h2>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Amazing service! The server setup was instant and the performance is outstanding."</p>
+                <p><strong>Happy Gamer</strong></p>
+            </div>
+            <div class="testimonial">
+                <div class="stars">★★★★★</div>
+                <p>"Amazing service! The server setup was instant and the performance is outstanding."</p>
+                <p><strong>Happy Gamer</strong></p>
+            </div>
+        </section>
+
+        <section class="faq-section">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq">
+                <h4>Can I upload an existing world to the server?</h4>
+                <p>Yes, you can easily upload your existing Minecraft world through our game panel.</p>
+            </div>
+            <div class="faq">
+                <h4>What if I need to upgrade or downgrade my plan?</h4>
+                <p>You can change your plan at any time through your control panel.</p>
+            </div>
+            <div class="faq">
+                <h4>Can I install mods, plugins, or modpacks to my server?</h4>
+                <p>Yes, we support easy installation of mods, plugins, and modpacks.</p>
+            </div>
+        </section>
+
+        <footer>
+            <p>© 2025 Vault Hosting. All rights reserved.</p>
+        </footer>
+
+        <script>
+            function togglePlans() {
+                const plansSection = document.getElementById('plans');
+                const heroSection = document.querySelector('.hero');
+                const featuresSection = document.querySelector('.features-section');
+                const testimonialsSection = document.querySelector('.testimonials-section');
+                const faqSection = document.querySelector('.faq-section');
+                if (plansSection.classList.contains('active')) {
+                    plansSection.classList.remove('active');
+                    heroSection.style.display = 'block';
+                    featuresSection.style.display = 'block';
+                    testimonialsSection.style.display = 'block';
+                    faqSection.style.display = 'block';
+                } else {
+                    plansSection.classList.add('active');
+                    heroSection.style.display = 'none';
+                    featuresSection.style.display = 'none';
+                    testimonialsSection.style.display = 'none';
+                    faqSection.style.display = 'none';
+                    showCategory('power');
+             
